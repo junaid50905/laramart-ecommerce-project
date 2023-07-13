@@ -15,4 +15,9 @@ class PickupPoint extends Model
         'main_phone',
         'alternative_phone',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(AllProduct::class);
+    }
 }

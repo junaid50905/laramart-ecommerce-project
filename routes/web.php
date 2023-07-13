@@ -110,8 +110,22 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         });
         //ProductController
         Route::controller(ProductController::class)->group(function () {
+            Route::get('/manage-products', 'index')->name('add_product.index');
             Route::get('/add-product', 'create')->name('add_product.create');
-            // Route::post('/pickup-point/store', 'store')->name('pickup_point.store');
+            Route::post('/product/store', 'store')->name('add_product.store');
+            Route::get('/product/show/{id}', 'show')->name('add_product.show');
+            Route::get('/product/destroy/{id}', 'destroy')->name('add_product.destroy');
+            Route::get('/product/edit/{id}', 'edit')->name('add_product.edit');
+
+
+            Route::get('/product/multiple-image/{id}', 'destroyThumbnail')->name('destroyThumbnail');
+
+
+            Route::get('/product/fetch-subcategory/{id}', 'fetchSubcategory');
+            Route::get('/product/fetch-childcategory/{id}', 'fetchChildcategory');
+
+            Route::get('/product/update/fetch-subcategory/{id}', 'fetchUpdatedSubcategory');
+            Route::get('/product/update/fetch-childcategory/{id}', 'fetchUpdatedChildcategory');
             // Route::get('/pickup-point/destroy/{id}', 'destroy')->name('pickup_point.destroy');
             // Route::get('/pickup-point/edit/{id}', 'edit')->name('pickup_point.edit');
             // Route::post('/pickup-point/update/{id}', 'update')->name('pickup_point.update');

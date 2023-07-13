@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('all_products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('subcategory_id');
-            $table->unsignedBigInteger('childcategory_id');
-            $table->unsignedBigInteger('brand_id');
-            $table->unsignedBigInteger('pickup_point_id');
-            $table->unsignedBigInteger('flash_deal_id');
-            $table->unsignedBigInteger('admin_id');
-            $table->unsignedBigInteger('warehouse_id');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('subcategory_id')->nullable();
+            $table->unsignedBigInteger('childcategory_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
+            $table->unsignedBigInteger('pickup_point_id')->nullable();
+            $table->unsignedBigInteger('admin_id')->nullable();
+            $table->unsignedBigInteger('warehouse_id')->nullable();
             $table->string('name');
             $table->string('code')->nullable();
             $table->string('color')->nullable();
@@ -34,7 +33,6 @@ return new class extends Migration
             $table->double('stock_quantity')->nullable();
             $table->text('description')->nullable();
             $table->string('thumbnail')->nullable();
-            $table->string('images')->nullable();
             $table->integer('featured')->nullable();
             $table->integer('today_deal')->nullable();
             $table->integer('status')->nullable();
@@ -55,6 +53,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('all_products');
     }
 };

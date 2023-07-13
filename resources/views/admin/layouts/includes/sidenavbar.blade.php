@@ -194,7 +194,7 @@
 
                         <!-- ========== Start manage-product ========== -->
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('add_product.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Product</p>
                             </a>
