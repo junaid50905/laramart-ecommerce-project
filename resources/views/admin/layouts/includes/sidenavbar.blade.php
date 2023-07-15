@@ -40,7 +40,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                <li class="nav-item">
+                <li class="nav-item {{ Request::path() === 'admin/dashboard/categories' || Request::path() === 'admin/dashboard/subcategories' || Request::path() === 'admin/dashboard/childcategory' || Request::path() === 'admin/dashboard/brands' || Request::path() === 'admin/dashboard/warehouses' ? 'active-parent-item' : ''}}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -50,7 +50,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <!-- ========== Start category ========== -->
-                        <li class="nav-item">
+                        <li class="nav-item {{ 'admin/dashboard/categories' === Request::path() ? 'active-child-item' : '' }}">
                             <a href="{{ route('category.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Categories</p>
@@ -59,7 +59,7 @@
                         <!-- ========== End category ========== -->
 
                         <!-- ========== Start subcategory ========== -->
-                        <li class="nav-item">
+                        <li class="nav-item {{ 'admin/dashboard/subcategories' === Request::path() ? 'active-child-item' : '' }}">
                             <a href="{{ route('subcategory.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Subcategory</p>
@@ -68,7 +68,7 @@
                         <!-- ========== End subcategory ========== -->
 
                         <!-- ========== Start childcategory ========== -->
-                        <li class="nav-item">
+                        <li class="nav-item {{ 'admin/dashboard/childcategory' === Request::path() ? 'active-child-item' : '' }}">
                             <a href="{{ route('childcategory.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Childcategory</p>
@@ -77,7 +77,7 @@
                         <!-- ========== End childcategory ========== -->
 
                         <!-- ========== Start brands ========== -->
-                        <li class="nav-item">
+                        <li class="nav-item {{ 'admin/dashboard/brands' === Request::path() ? 'active-child-item' : '' }}">
                             <a href="{{ route('brand.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Brand</p>
@@ -86,7 +86,7 @@
                         <!-- ========== End brands ========== -->
 
                         <!-- ========== Start warehouse ========== -->
-                        <li class="nav-item">
+                        <li class="nav-item {{ 'admin/dashboard/warehouses' === Request::path() ? 'active-child-item' : '' }}">
                             <a href="{{ route('warehouse.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Warehouse</p>
@@ -97,7 +97,7 @@
                     </ul>
                 </li> <!--end category-->
 
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/dashboard/settings/*') ? 'active-parent-item' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -107,7 +107,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <!-- ========== Start Seo ========== -->
-                        <li class="nav-item">
+                        <li class="nav-item {{ 'admin/dashboard/settings/seo' === Request::path() ? 'active-child-item' : '' }}">
                             <a href="{{ route('settings.seo.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Seo settings</p>
@@ -116,7 +116,7 @@
                         <!-- ========== End Seo ========== -->
 
                         <!-- ========== Start SMTP ========== -->
-                        <li class="nav-item">
+                        <li class="nav-item {{ 'admin/dashboard/settings/smtp' === Request::path() ? 'active-child-item' : '' }}">
                             <a href="{{ route('settings.smtp.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>SMTP settings</p>
@@ -125,7 +125,7 @@
                         <!-- ========== End SMTP ========== -->
 
                         <!-- ========== Start Website settings ========== -->
-                        <li class="nav-item">
+                        <li class="nav-item {{ 'admin/dashboard/settings/website-settings' === Request::path() ? 'active-child-item' : '' }}">
                             <a href="{{ route('settings.website.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Website settings</p>
@@ -137,7 +137,7 @@
                     </ul>
                 </li> <!--end settings-->
 
-                <li class="nav-item">
+                <li class="nav-item  {{ request()->is('admin/dashboard/offers/*') ? 'active-parent-item' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -147,7 +147,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <!-- ========== Start coupon ========== -->
-                        <li class="nav-item">
+                        <li class="nav-item  {{ 'admin/dashboard/offers/coupons' === Request::path() ? 'active-child-item' : '' }}">
                             <a href="{{ route('offers.coupon.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Coupon</p>
@@ -155,18 +155,9 @@
                         </li>
                         <!-- ========== End coupon ========== -->
 
-                        <!-- ========== Start e-campaign ========== -->
-                        <li class="nav-item">
-                            <a href="{{ route('settings.smtp.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>E-campaign</p>
-                            </a>
-                        </li>
-                        <!-- ========== End e-campaign ========== -->
-
                     </ul>
                 </li> <!--end offers-->
-                <li class="nav-item">
+                <li class="nav-item {{ 'admin/dashboard/pickup-points' === Request::path() ? 'active-parent-item' : '' }}">
                     <a href="{{ route('pickup_points.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -174,7 +165,7 @@
                         </p>
                     </a>
                 </li> <!--end pickup points-->
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/dashboard/product/*') ? 'active-parent-item' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -184,7 +175,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <!-- ========== Start coupon ========== -->
-                        <li class="nav-item">
+                        <li class="nav-item {{ 'admin/dashboard/product/add-product' === Request::path() ? 'active-child-item' : '' }}">
                             <a href="{{ route('add_product.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Product</p>
@@ -193,7 +184,7 @@
                         <!-- ========== End coupon ========== -->
 
                         <!-- ========== Start manage-product ========== -->
-                        <li class="nav-item">
+                        <li class="nav-item {{ 'admin/dashboard/product/manage-products' === Request::path() ? 'active-child-item' : '' }}">
                             <a href="{{ route('add_product.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Product</p>

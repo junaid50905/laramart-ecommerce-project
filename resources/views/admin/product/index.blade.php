@@ -41,7 +41,7 @@
                             <td>{{ $product->stock_quantity }}</td>
                             <td>
                                 <a href="{{ route('add_product.show', $product->id) }}" class="btn btn-sm btn-primary">Show</a>
-                                <a href={{ route('add_product.edit', $product->id) }} class="btn btn-sm btn-warning">Edit</button>
+                                <a href={{ route('add_product.edit', $product->id) }} class="btn btn-sm btn-warning mx-2">Edit</button>
                                 <a href="{{ route('add_product.destroy', $product->id) }}" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                         </tr>

@@ -60,7 +60,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::controller(CategoryController::class)->group(function () {
             Route::get('/categories', 'index')->name('category.index');
             Route::post('/categories', 'store')->name('category.store');
-            Route::get('/destroy/{id}', 'destroy')->name('category.destroy');
+            Route::get('/category/destroy/{id}', 'destroy')->name('category.destroy');
             Route::get('/category/edit/{id}', 'edit');
             Route::post('/category/update', 'update')->name('category.update');
         });
@@ -108,27 +108,30 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::get('/pickup-point/edit/{id}', 'edit')->name('pickup_point.edit');
             Route::post('/pickup-point/update/{id}', 'update')->name('pickup_point.update');
         });
-        //ProductController
-        Route::controller(ProductController::class)->group(function () {
-            Route::get('/manage-products', 'index')->name('add_product.index');
-            Route::get('/add-product', 'create')->name('add_product.create');
-            Route::post('/product/store', 'store')->name('add_product.store');
-            Route::get('/product/show/{id}', 'show')->name('add_product.show');
-            Route::get('/product/destroy/{id}', 'destroy')->name('add_product.destroy');
-            Route::get('/product/edit/{id}', 'edit')->name('add_product.edit');
+
+        Route::prefix('product')->group(function(){
+            //ProductController
+            Route::controller(ProductController::class)->group(function () {
+                Route::get('/manage-products', 'index')->name('add_product.index');
+                Route::get('/add-product', 'create')->name('add_product.create');
+                Route::post('/product/store', 'store')->name('add_product.store');
+                Route::get('/product/show/{id}', 'show')->name('add_product.show');
+                Route::get('/product/destroy/{id}', 'destroy')->name('add_product.destroy');
+                Route::get('/product/edit/{id}', 'edit')->name('add_product.edit');
 
 
-            Route::get('/product/multiple-image/{id}', 'destroyThumbnail')->name('destroyThumbnail');
+                Route::get('/product/multiple-image/{id}', 'destroyThumbnail')->name('destroyThumbnail');
 
 
-            Route::get('/product/fetch-subcategory/{id}', 'fetchSubcategory');
-            Route::get('/product/fetch-childcategory/{id}', 'fetchChildcategory');
+                Route::get('/product/fetch-subcategory/{id}', 'fetchSubcategory');
+                Route::get('/product/fetch-childcategory/{id}', 'fetchChildcategory');
 
-            Route::get('/product/update/fetch-subcategory/{id}', 'fetchUpdatedSubcategory');
-            Route::get('/product/update/fetch-childcategory/{id}', 'fetchUpdatedChildcategory');
-            // Route::get('/pickup-point/destroy/{id}', 'destroy')->name('pickup_point.destroy');
-            // Route::get('/pickup-point/edit/{id}', 'edit')->name('pickup_point.edit');
-            // Route::post('/pickup-point/update/{id}', 'update')->name('pickup_point.update');
+                Route::get('/product/update/fetch-subcategory/{id}', 'fetchUpdatedSubcategory');
+                Route::get('/product/update/fetch-childcategory/{id}', 'fetchUpdatedChildcategory');
+                // Route::get('/pickup-point/destroy/{id}', 'destroy')->name('pickup_point.destroy');
+                // Route::get('/pickup-point/edit/{id}', 'edit')->name('pickup_point.edit');
+                // Route::post('/pickup-point/update/{id}', 'update')->name('pickup_point.update');
+            });
         });
 
 
