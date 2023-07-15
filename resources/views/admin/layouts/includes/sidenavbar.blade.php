@@ -165,6 +165,8 @@
                         </p>
                     </a>
                 </li> <!--end pickup points-->
+
+
                 <li class="nav-item {{ request()->is('admin/dashboard/product/*') ? 'active-parent-item' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
@@ -175,7 +177,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <!-- ========== Start coupon ========== -->
-                        <li class="nav-item {{ 'admin/dashboard/product/add-product' === Request::path() ? 'active-child-item' : '' }}">
+                        <li class="nav-item {{ Request::routeIs('add_product.create') ? 'active-child-item' : '' }}">
                             <a href="{{ route('add_product.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Product</p>
@@ -184,7 +186,7 @@
                         <!-- ========== End coupon ========== -->
 
                         <!-- ========== Start manage-product ========== -->
-                        <li class="nav-item {{ 'admin/dashboard/product/manage-products' === Request::path() ? 'active-child-item' : '' }}">
+                        <li class="nav-item {{ Request::routeIs('add_product.index') ? 'active-child-item' : '' }}">
                             <a href="{{ route('add_product.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Product</p>

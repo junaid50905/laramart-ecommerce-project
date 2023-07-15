@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PickupPointController extends Controller
 {
     //index
-    public function index()
+    public function index(Request $request)
     {
         $pickup_points = PickupPoint::all();
         return view('admin.pickup-points.index', compact('pickup_points'));
